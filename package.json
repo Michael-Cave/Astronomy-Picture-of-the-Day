@@ -1,0 +1,23 @@
+{
+  "name": "astronomy-picture-of-the-day",
+  "version": "1.0.0",
+  "description": "An Electron App to render out NASA's Astronomy Picture of the Day",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Michael-Cave/Astronomy-Picture-of-the-Day.git"
+  },
+  "author": "Michael Cave",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Michael-Cave/Astronomy-Picture-of-the-Day/issues"
+  },
+  "homepage": "https://github.com/Michael-Cave/Astronomy-Picture-of-the-Day#readme",
+  "devDependencies": {
+    "electron": "^29.1.0"
+  }
+}
