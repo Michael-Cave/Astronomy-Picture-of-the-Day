@@ -44,7 +44,7 @@ function isFutureDate(date) {
 
 
 async function fetchAstronomyPic(date = getCurrentDate()) {
-    try {const response = await fetch(`${astronomyPicURL}?api_key=${apiKey}&date=${date}`)
+    try {const response = await fetch(`${astronomyPicURL}?api_key=${apiKey}&date=${date}&concept_tags=True`)
         const jsonResponse = await response.json()
         return jsonResponse
     } catch (error) {
@@ -54,12 +54,18 @@ async function fetchAstronomyPic(date = getCurrentDate()) {
 }
 
 function safelyExtractKey(response, key) {
-    if (response && response.hasOwnProperty(key)) {
+    try {
+        if (response && response.hasOwnProperty(key)) {
         return response[key]
     } else {
-        
+        throw new Error(`Error: No such key: ${key}`)
+    }
+    } catch (error) {
+        console.log(`Error extracting key "${key}": ${error}`)
+        throw error
     }
 }
+
 
 
 
