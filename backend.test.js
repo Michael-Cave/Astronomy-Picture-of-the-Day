@@ -1,12 +1,12 @@
-const { fetchAstronomyPic, getCurrentDate, isValidPastDate, isFutureDate } = require('./backend')
+const { fetchAstronomyPic, getCurrentDate, isValidPastDate, isFutureDate, makeWorkableAstronomyObject } = require('./backend')
 require('dotenv').config();
 const apiKey = process.env.API_KEY
 const fetch = require('node-fetch')
 
 
-test('copyright is present', async () => {
+test('checks that the api call worked via dates existance', async () => {
     const result = await fetchAstronomyPic()
-    const expectedProperty = 'copyright';
+    const expectedProperty = 'date';
 
     expect(result).toHaveProperty(expectedProperty);
 })
@@ -55,4 +55,13 @@ test('date is after current date', () => {
     const expectedValue = false
 
     expect(result).toBe(expectedValue);
+})
+
+test('object extracts resource value correctly', async () => {
+    const result = await makeWorkableAstronomyObject()
+    expect(result).toHaveProperty("resource");
+})
+test('object extracts explanation value correctly', async () => {
+    const result = await makeWorkableAstronomyObject()
+    expect(result).toHaveProperty("explanation");
 })
